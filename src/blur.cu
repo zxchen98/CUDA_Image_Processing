@@ -5,8 +5,8 @@
 #include "driver_types.h"
 #include <chrono>
 
-#define BLOCK 32
-#define FILTER_SIZE 15
+#define BLOCK 16
+#define FILTER_SIZE 25
 
 using namespace cv;
 using namespace std;
@@ -16,21 +16,35 @@ using namespace std;
     This is the device kernel function that takes in original image and kernel filter to do 2d convolution
 */
 __global__ void cuda_convolution(float *input_im, float* output_im, int nx, int ny, float *cuda_kernel, int kernel_size){
-    int idx = blockIdx.x * blockDim.x + threadIdx.x;
-    int idy = blockIdx.y * blockDim.y + threadIdx.y;
+    __shared__ float shared_input[FILTER_SIZE* FILTER_SIZE];
+
+    int blockx = blockDim.x;
+    int blocky = blockDim.y;
+
+    int idx = blockIdx.x * blockx + threadIdx.x;
+    int idy = blockIdx.y * blocky + threadIdx.y;
     int index = idy * nx + idx;
 
     if(idx>=ny || idy>=nx){
         return;
     }
+    else {
+        // copy filter value into shared memory
+        for (int i = 0; i < kernel_size; i++) {
+            for (int j = 0; j < kernel_size; j++) {
+                shared_input[i * kernel_size + j] = cuda_kernel[i * kernel_size + j];
+            }
+        }
+        __syncthreads();
 
-    for (int i = 0; i < kernel_size; i++){
-        for (int j = 0; j < kernel_size; j++){
-            // deal with the pixel out of bound cases
-            int imgx = min(max(idx + i - kernel_size / 2, 0), nx - 1);
-            int imgy = min(max(idy + j - kernel_size / 2, 0), ny - 1);
-            // convolve with the gaussian kernel
-            output_im[index] += input_im[imgy * nx + imgx] * cuda_kernel[j * kernel_size + i];
+        for (int i = 0; i < kernel_size; i++) {
+            for (int j = 0; j < kernel_size; j++) {
+                // deal with the thread out of bound cases
+                int imgx = min(max(idx + i - kernel_size / 2, 0), nx - 1);
+                int imgy = min(max(idy + j - kernel_size / 2, 0), ny - 1);
+                // convolve with the gaussian kernel
+                output_im[index] += input_im[imgy * nx + imgx] * shared_input[j * kernel_size + i];
+            }
         }
     }
 }
@@ -54,15 +68,14 @@ void Gaussian_Blur(float *host_input, float *host_output, int nx, int ny, float*
 
     // run kernel function and measure running time
     dim3 block = dim3(BLOCK, BLOCK, 1);
-    dim3 grid = dim3(nx / block.x + 1, ny / block.y + 1, 1);
+    dim3 grid = dim3(ceil(nx / block.x) , ceil(ny / block.y), 1);
 
     auto cbegin = std::chrono::high_resolution_clock::now();
-    cuda_convolution << <grid, block>> > (input_im, output_im,nx, ny, cuda_kernel, filter_size);
+    cuda_convolution << <grid, block, FILTER_SIZE* FILTER_SIZE * sizeof(float) >> > (input_im, output_im, nx, ny, cuda_kernel, filter_size);
     auto cend = std::chrono::high_resolution_clock::now();
     auto ctime = std::chrono::duration_cast<std::chrono::nanoseconds>(cend - cbegin);
     cout << "Processing time:\n" << endl;
     cout << "Processing Time With Cuda: " << ctime.count() * 1e-9 << " sec" << endl;
 
-    checkCudaErrors(cudaThreadSynchronize());
     checkCudaErrors(cudaMemcpy(host_output, output_im, nx * ny * sizeof(float), cudaMemcpyDeviceToHost));
 }

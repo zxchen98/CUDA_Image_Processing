@@ -13,7 +13,7 @@ using namespace std;
 
 // edit them to achieve your desired blurring effect
 #define SIGMA 15.0
-#define KERNEL_SIZE 55
+#define KERNEL_SIZE 25
 
 /*
     This function creates a gaussian filter kernel of defined size
@@ -71,12 +71,13 @@ float* process_cuda(Mat src){
     float* host_input = new float[img_size];
     float* host_output = new float[img_size];
 
-
+    
     for (int i = 0; i < src.rows; i++) {
         for (int j = 0; j < src.cols; j++) {
             host_input[i * src.cols + j] = uchar(src.at<uchar>(i * src.cols + j));
         }
     }
+
     // call create_filter to generate gaussian filter
     host_kernel = create_filter();
     // call blurring funtion to process image blur

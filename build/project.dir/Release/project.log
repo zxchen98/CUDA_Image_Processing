@@ -27,16 +27,17 @@ H:/CUDA_Image_Processing/opencv/build/include\opencv2/stitching/detail/blenders.
 H:/CUDA_Image_Processing/opencv/build/include\opencv2/stitching/detail/blenders.hpp(127): warning #611-D: overloaded virtual function "cv::detail::Blender::prepare" is only partially overridden in class "cv::detail::MultiBandBlender"
   
   blur.cu
-H:\CUDA_Image_Processing\src\blur.cu(66): warning C4996: 'cudaThreadSynchronize': was declared deprecated
+H:\CUDA_Image_Processing\src\blur.cu(65): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
+H:\CUDA_Image_Processing\src\blur.cu(65): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
   main.cpp
 H:\CUDA_Image_Processing\src\main.cpp(38,30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 H:\CUDA_Image_Processing\src\main.cpp(43,32): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-H:\CUDA_Image_Processing\src\main.cpp(111,59): warning C4244: '=': conversion from 'float' to '_Tp', possible loss of data
+H:\CUDA_Image_Processing\src\main.cpp(112,59): warning C4244: '=': conversion from 'float' to '_Tp', possible loss of data
           with
           [
               _Tp=uchar
           ]
-H:\CUDA_Image_Processing\src\main.cpp(127,9): warning C4996: 'mkdir': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _mkdir. See online help for details.
-H:\CUDA_Image_Processing\src\main.cpp(128,32): warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+H:\CUDA_Image_Processing\src\main.cpp(128,9): warning C4996: 'mkdir': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _mkdir. See online help for details.
+H:\CUDA_Image_Processing\src\main.cpp(129,32): warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
      Creating library H:/CUDA_Image_Processing/build/Release/project.lib and object H:/CUDA_Image_Processing/build/Release/project.exp
   project.vcxproj -> H:\CUDA_Image_Processing\build\Release\project.exe
