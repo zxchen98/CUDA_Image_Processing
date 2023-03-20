@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>H:\project\build\CMakeFiles\3.23.2\CompilerIdCUDA\CompilerIdCUDA.exe</FullPath>
+      <FullPath>H:\CUDA_Image_Processing\build\CMakeFiles\3.23.2\CompilerIdCUDA\CompilerIdCUDA.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

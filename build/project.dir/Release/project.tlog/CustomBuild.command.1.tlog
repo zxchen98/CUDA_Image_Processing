@@ -1,6 +1,6 @@
-^H:\PROJECT\CMAKELISTS.TXT
+^H:\CUDA_IMAGE_PROCESSING\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SH:/project -BH:/project/build --check-stamp-file H:/project/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SH:/CUDA_Image_Processing -BH:/CUDA_Image_Processing/build --check-stamp-file H:/CUDA_Image_Processing/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

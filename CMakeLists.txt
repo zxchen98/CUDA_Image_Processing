@@ -61,11 +61,11 @@ include_directories(
 )
 
 #add_subdirectory (thirdparty)
-
-FIND_PACKAGE(OpenCV REQUIRED)
+set(OpenCV_DIR "./opencv/build")
+FIND_PACKAGE(OpenCV REQUIRED PATHS ./opencv)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(project ./src/main.cpp ./src/kernel.cu)
+add_executable(project ./src/main.cpp ./src/blur.cu)
 
 
 target_link_libraries(project PUBLIC ${OpenCV_LIBS}

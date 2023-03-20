@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>H:\project\build\x64\Release\ZERO_CHECK</FullPath>
+      <FullPath>H:\CUDA_Image_Processing\build\x64\Release\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>H:\project\build\Release\project.exe</FullPath>
+      <FullPath>H:\CUDA_Image_Processing\build\Release\project.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

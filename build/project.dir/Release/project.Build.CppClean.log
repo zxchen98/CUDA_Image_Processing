@@ -1,10 +1,8 @@
 project.dir\release\blur.obj
-h:\project\build\cmakefiles\generate.stamp
-h:\project\build\project.dir\release\blur.cu.cache
-h:\project\build\project.dir\release\blur.obj
-h:\project\build\project.dir\release\project.tlog\cl.command.1.tlog
-h:\project\build\project.dir\release\project.tlog\cudacompile.read.1u.tlog
-h:\project\build\project.dir\release\project.tlog\cudacompile.write.1u.tlog
-h:\project\build\project.dir\release\project.tlog\custombuild.command.1.tlog
-h:\project\build\project.dir\release\project.tlog\custombuild.read.1.tlog
-h:\project\build\project.dir\release\project.tlog\custombuild.write.1.tlog
+h:\cuda_image_processing\build\cmakefiles\generate.stamp
+h:\cuda_image_processing\build\project.dir\release\blur.cu.cache
+h:\cuda_image_processing\build\project.dir\release\project.tlog\cudacompile.read.1u.tlog
+h:\cuda_image_processing\build\project.dir\release\project.tlog\cudacompile.write.1u.tlog
+h:\cuda_image_processing\build\project.dir\release\project.tlog\custombuild.command.1.tlog
+h:\cuda_image_processing\build\project.dir\release\project.tlog\custombuild.read.1.tlog
+h:\cuda_image_processing\build\project.dir\release\project.tlog\custombuild.write.1.tlog
