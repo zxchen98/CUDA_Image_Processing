@@ -47,10 +47,6 @@ float* create_filter(){
             kernel[k_idx] *= normalization_factor;
         }
     }
-    //float* host_kernel = new float[KERNEL_SIZE * KERNEL_SIZE];
-    //float* cuda_kernel = new float[KERNEL_SIZE * KERNEL_SIZE];
-    //checkCudaErrors(cudaMalloc((void**)&cuda_kernel, KERNEL_SIZE * KERNEL_SIZE * sizeof(float)));
-    //checkCudaErrors(cudaMemcpy(cuda_kernel, host_kernel, KERNEL_SIZE * KERNEL_SIZE * sizeof(float), cudaMemcpyHostToDevice));
     return kernel;
 }
 /*
